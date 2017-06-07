@@ -49,7 +49,8 @@ final class GuildNameTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $name = new GuildName('me');
 
         $this->isTrue($name->isEqualTo(new GuildName('me')));

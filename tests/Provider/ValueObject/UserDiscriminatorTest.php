@@ -13,17 +13,20 @@ use PHPUnit\Framework\TestCase;
  */
 final class UserDiscriminatorTest extends TestCase
 {
-    public function testCanBeCreatedByValidDiscriminator(){
+    public function testCanBeCreatedByValidDiscriminator()
+    {
         $this->assertInstanceOf(UserDiscriminator::class, new UserDiscriminator(1234));
     }
 
-    public function testCannotBeCreatedByTooLongDiscriminator() {
+    public function testCannotBeCreatedByTooLongDiscriminator()
+    {
         $this->expectException(InvalidUserDiscriminatorException::class);
 
         new UserDiscriminator(12345);
     }
 
-    public function testCannotBeCreatedByTooShortDiscriminator() {
+    public function testCannotBeCreatedByTooShortDiscriminator()
+    {
         $this->expectException(InvalidUserDiscriminatorException::class);
 
         new UserDiscriminator(123);
@@ -37,7 +40,8 @@ final class UserDiscriminatorTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $email = new UserDiscriminator(1234);
 
         $this->isTrue($email->isEqualTo(new UserDiscriminator(1234)));

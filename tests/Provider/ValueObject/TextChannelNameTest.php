@@ -55,7 +55,8 @@ final class TextChannelNameTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $name = new TextChannelName('me');
 
         $this->isTrue($name->isEqualTo(new TextChannelName('me')));

@@ -13,7 +13,8 @@ use PHPUnit\Framework\TestCase;
  */
 class UserNameTest extends TestCase
 {
-    public function testCanBeCreatedByValidUserName(){
+    public function testCanBeCreatedByValidUserName()
+    {
         $this->assertInstanceOf(
             UserName::class,
             new UserName("me")
@@ -25,13 +26,15 @@ class UserNameTest extends TestCase
         );
     }
 
-    public function testCannotBeCreatedByTooLongUsername() {
+    public function testCannotBeCreatedByTooLongUsername()
+    {
         $this->expectException(InvalidUserNameException::class);
 
         new UserName(str_repeat('me', 16) . 'm');
     }
 
-    public function testCannotBeCreatedByTooShortUsername() {
+    public function testCannotBeCreatedByTooShortUsername()
+    {
         $this->expectException(InvalidUserNameException::class);
 
         new UserName('m');
@@ -45,7 +48,8 @@ class UserNameTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $name = new UserName('me');
 
         $this->isTrue($name->isEqualTo(new UserName('me')));

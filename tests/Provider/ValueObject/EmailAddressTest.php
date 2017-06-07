@@ -36,7 +36,8 @@ final class EmailAddressTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $email = new EmailAddress('me@example.com');
 
         $this->isTrue($email->isEqualTo(new EmailAddress('me@example.com')));

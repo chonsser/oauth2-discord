@@ -48,7 +48,8 @@ final class VoiceChannelNameTest extends TestCase
         );
     }
 
-    public function testIsEqualTo(){
+    public function testIsEqualTo()
+    {
         $name = new VoiceChannelName('me');
 
         $this->isTrue($name->isEqualTo(new VoiceChannelName('me')));
