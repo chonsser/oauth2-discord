@@ -157,6 +157,7 @@ class Discord extends AbstractProvider
 
     /**
      * @param User $user
+     *
      * @deprecated Inaccessible api (such scope doesn't exists. Thanks @discord)
      */
     public function fetchUser(User $user)
@@ -216,21 +217,18 @@ class Discord extends AbstractProvider
             ->setInviterDiscriminator(new UserDiscriminator($response['inviter']['discriminator']))
             ->setInviterId($response['inviter']['id'])
             ->setInviterAvatar($response['inviter']['avatar'])
-
             ->setCode($response['code'])
-
             ->setGuildSplash($response['guild']['splash'])
             ->setGuildId($response['guild']['id'])
             ->setGuildIcon($response['guild']['icon'])
             ->setGuildName(new GuildName($response['guild']['name']))
-
             ->setChannelType($channel_type)
             ->setChannelId($response['channel']['id'])
             ->setChannelName(
                 (string)$channel_type === $channel_type::TEXT_CHANNEL ?
                     new TextChannelName($response['channel']['name']) :
-                    new VoiceChannelName($response['channel']['name']
-                    ));
+                    new VoiceChannelName($response['channel']['name'])
+            );
 
         return $invite;
     }
