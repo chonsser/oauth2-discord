@@ -26,6 +26,8 @@ class ChannelType
      */
     public function __construct($channel_type)
     {
+        $this->guardChannelType($channel_type);
+
         $this->channel_type = $channel_type;
     }
 
@@ -44,9 +46,20 @@ class ChannelType
      */
     public function guardChannelType(string $channel_type)
     {
-        if ($channel_type !== self::TEXT_CHANNEL || $channel_type !== self::VOICE_CHANNEL) {
+        if ($channel_type !== self::TEXT_CHANNEL && $channel_type !== self::VOICE_CHANNEL) {
             throw new InvalidChannelTypeException(
-                "Invalid channel type given. Channel type has to be: 'text' or 'voice'");
+                "Invalid channel type given. Channel type has to be: 'text' or 'voice'"
+            );
         }
+    }
+
+    /**
+     * @param ChannelType $channelType
+     *
+     * @return bool
+     */
+    public function isEqualTo(ChannelType $channelType)
+    {
+        return $this->channel_type === (string)$channelType;
     }
 }
