@@ -1,7 +1,7 @@
 <?php
 namespace Discord\OAuth2\Client\Provider\ValueObject;
 
-use Discord\OAuth2\Client\Provider\Exception\ValueObject\InvalidChannelNameException;
+use Discord\OAuth2\Client\Provider\Exception\ValueObject\InvalidVoiceChannelNameException;
 
 /**
  * Class VoiceChannelName
@@ -40,18 +40,18 @@ final class VoiceChannelName
     /**
      * @param $channel_name
      *
-     * @throws InvalidChannelNameException
+     * @throws InvalidVoiceChannelNameException
      */
     private function guardChannelName($channel_name)
     {
         $name_length = strlen($channel_name);
 
         if ($name_length > self::MAX_LENGTH) {
-            throw new InvalidChannelNameException("Voice channel name must have less than 100 characters");
+            throw new InvalidVoiceChannelNameException("Voice channel name must have less than 100 characters");
         }
 
         if ($name_length < self::MIN_LENGTH) {
-            throw new InvalidChannelNameException("Voice channel name must have more than 2 characters");
+            throw new InvalidVoiceChannelNameException("Voice channel name must have more than 2 characters");
         }
     }
 

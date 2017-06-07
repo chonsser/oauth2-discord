@@ -1,7 +1,7 @@
 <?php
 namespace Discord\OAuth2\Client\Provider\ValueObject;
 
-use Discord\OAuth2\Client\Provider\Exception\ValueObject\InvalidChannelNameException;
+use Discord\OAuth2\Client\Provider\Exception\ValueObject\InvalidTextChannelNameException;
 
 /**
  * Class TextChannelName
@@ -40,22 +40,22 @@ final class TextChannelName
     /**
      * @param $channel_name
      *
-     * @throws InvalidChannelNameException
+     * @throws InvalidTextChannelNameException
      */
     private function guardChannelName($channel_name)
     {
         if (preg_match('/\s/', $channel_name)) {
-            throw new InvalidChannelNameException("Text channel name can't have whitespaces in it");
+            throw new InvalidTextChannelNameException("Text channel name can't have whitespaces in it");
         }
 
         $name_length = strlen($channel_name);
 
         if ($name_length > self::MAX_LENGTH) {
-            throw new InvalidChannelNameException("Text channel name must have less than 100 characters");
+            throw new InvalidTextChannelNameException("Text channel name must have less than 100 characters");
         }
 
         if ($name_length < self::MIN_LENGTH) {
-            throw new InvalidChannelNameException("Text channel name must have more than 2 characters");
+            throw new InvalidTextChannelNameException("Text channel name must have more than 2 characters");
         }
     }
 
