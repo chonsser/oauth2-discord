@@ -21,7 +21,6 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
-
 /**
  * Represents Discord's OAuth2 provider
  * @author Dominik Szymański <toja@chonsser.me>
@@ -85,7 +84,7 @@ class Discord extends AbstractProvider
             throw new RatelimitException('Globally: ' . ($data['global'] ? 'yes' : 'no'));
         }
 
-        if($response->getStatusCode() === 401) {
+        if ($response->getStatusCode() === 401) {
             throw new ApiException('Unauthorized');
         }
 
@@ -114,8 +113,7 @@ class Discord extends AbstractProvider
         $user
             ->setAccessToken($token);
 
-        if (
-            array_key_exists('id', $response) &&
+        if (array_key_exists('id', $response) &&
             array_key_exists('username', $response)
         ) { // Has 'identify' scope
             $user
@@ -133,7 +131,13 @@ class Discord extends AbstractProvider
                 ->setVerified($response['verified']);
         }
 
-        $guilds = $this->getParsedResponse(self::getAuthenticatedRequest('GET', self::API_URL . '/users/@me/guilds', $token));
+        $guilds = $this->getParsedResponse(
+            self::getAuthenticatedRequest(
+                'GET',
+                self::API_URL . '/users/@me/guilds',
+                $token
+            )
+        );
 
         foreach ($guilds as $key => $guild) {
             $_guild = new Guild();
@@ -178,7 +182,8 @@ class Discord extends AbstractProvider
      * @throws MissingBotException
      * @throws UnknownInviteException
      */
-    public function acceptInvite(User $user, string $code){
+    public function acceptInvite(User $user, string $code)
+    {
         $response = $this->getParsedResponse(self::getAuthenticatedRequest(
             'POST',
             self::API_URL . '/invites/' . $code,
@@ -191,14 +196,14 @@ class Discord extends AbstractProvider
             ]
         ));
 
-        switch((int)$response['code']){
+        switch ((int)$response['code']) {
             case ErrorCode::UNKNOWN_INVITE:
                 throw new UnknownInviteException("Unknown invite code");
             case ErrorCode::MISSING_BOT:
                 throw new MissingBotException("Bot's missing on the server");
         }
 
-        if((int)$response['code'] === ErrorCode::UNKNOWN_INVITE){
+        if ((int)$response['code'] === ErrorCode::UNKNOWN_INVITE) {
             throw new UnknownInviteException("Unknown invite code");
         }
 
@@ -221,7 +226,11 @@ class Discord extends AbstractProvider
 
             ->setChannelType($channel_type)
             ->setChannelId($response['channel']['id'])
-            ->setChannelName((string)$channel_type === $channel_type::TEXT_CHANNEL ? new TextChannelName($response['channel']['name']) : new VoiceChannelName($response['channel']['name']));
+            ->setChannelName(
+                (string)$channel_type === $channel_type::TEXT_CHANNEL ?
+                    new TextChannelName($response['channel']['name']) :
+                    new VoiceChannelName($response['channel']['name']
+                    ));
 
         return $invite;
     }

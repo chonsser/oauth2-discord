@@ -83,7 +83,8 @@ final class Permission
         READ_MESSAGE_HISTORY = 0x00010000,
 
         /**
-         * Allows for using the "@everyone" tag to notify all users in a channel, and the "@here" tag to notify all online users in a channel
+         * Allows for using the "@everyone" tag to notify all users in a channel,
+         * and the "@here" tag to notify all online users in a channel
          */
         MENTION_EVERYONE = 0x00020000,
 

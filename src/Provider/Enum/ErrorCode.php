@@ -197,7 +197,8 @@ class ErrorCode
         NOTE_TOO_LONG = 50015,
 
         /**
-         * 	Provided too few or too many messages to delete. Must provide at least 2 and fewer than 100 messages to delete.
+         *  Provided too few or too many messages to delete.
+         *  Must provide at least 2 and fewer than 100 messages to delete.
          */
         INVALID_MESSAGES_DELETE = 50016,
 
@@ -221,5 +222,4 @@ class ErrorCode
          * Reactions blocked
          */
         REACION_BLOCKED = 90001;
-
 }

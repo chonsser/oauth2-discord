@@ -33,7 +33,7 @@ final class UserDiscriminator
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return (string)$this->discriminator;
     }
@@ -43,10 +43,11 @@ final class UserDiscriminator
      *
      * @throws InvalidUserDiscriminatorException
      */
-    private function guardDiscriminator($discriminator){
+    private function guardDiscriminator($discriminator)
+    {
         $length = strlen((string)$discriminator);
 
-        if($length !== self::LENGTH){
+        if ($length !== self::LENGTH) {
             throw new InvalidUserDiscriminatorException("Discriminator must have 4 numbers");
         }
     }
@@ -56,7 +57,8 @@ final class UserDiscriminator
      *
      * @return bool
      */
-    public function isEqualTo(UserDiscriminator $userDiscriminator){
+    public function isEqualTo(UserDiscriminator $userDiscriminator)
+    {
         return $this->discriminator === (string)$userDiscriminator;
     }
 }

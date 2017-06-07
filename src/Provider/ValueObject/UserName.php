@@ -32,7 +32,7 @@ final class UserName
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->user_name;
     }
@@ -42,14 +42,15 @@ final class UserName
      *
      * @throws InvalidUserNameException
      */
-    private function guardUserName($user_name){
+    private function guardUserName($user_name)
+    {
         $name_length = strlen($user_name);
 
-        if($name_length > self::MAX_LENGTH){
+        if ($name_length > self::MAX_LENGTH) {
             throw new InvalidUserNameException("Username must have less than 100 characters");
         }
 
-        if($name_length < self::MIN_LENGTH) {
+        if ($name_length < self::MIN_LENGTH) {
             throw new InvalidUserNameException("Username must have more than 2 characters");
         }
     }
@@ -59,7 +60,8 @@ final class UserName
      *
      * @return bool
      */
-    public function isEqualTo(UserName $userName){
+    public function isEqualTo(UserName $userName)
+    {
         return $this->user_name === (string)$userName;
     }
 }

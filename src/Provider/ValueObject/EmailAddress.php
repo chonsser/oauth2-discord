@@ -28,7 +28,7 @@ final class EmailAddress
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->email;
     }
@@ -38,8 +38,9 @@ final class EmailAddress
      *
      * @throws InvalidEmailException
      */
-    private function guardEmail($email){
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    private function guardEmail($email)
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidEmailException($email . ' is not a valid email address');
         }
     }
@@ -49,7 +50,8 @@ final class EmailAddress
      *
      * @return bool
      */
-    public function isEqualTo(EmailAddress $email){
+    public function isEqualTo(EmailAddress $email)
+    {
         return $this->email == $email->email;
     }
 }

@@ -32,7 +32,7 @@ final class GuildName
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->guild_name;
     }
@@ -42,14 +42,15 @@ final class GuildName
      *
      * @throws InvalidGuildNameException
      */
-    private function guardGuildName($guild_name){
+    private function guardGuildName($guild_name)
+    {
         $name_length = strlen($guild_name);
 
-        if($name_length > self::MAX_LENGTH){
+        if ($name_length > self::MAX_LENGTH) {
             throw new InvalidGuildNameException("Guild name must have less than 100 characters");
         }
 
-        if($name_length < self::MIN_LENGTH) {
+        if ($name_length < self::MIN_LENGTH) {
             throw new InvalidGuildNameException("Guild name must have more than 2 characters");
         }
     }
@@ -59,7 +60,8 @@ final class GuildName
      *
      * @return bool
      */
-    public function isEqualTo(GuildName $guildName){
+    public function isEqualTo(GuildName $guildName)
+    {
         return $this->guild_name === (string)$guildName;
     }
 }

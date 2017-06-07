@@ -32,7 +32,7 @@ class ChannelType
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->channel_type;
     }
@@ -42,10 +42,11 @@ class ChannelType
      *
      * @throws InvalidChannelTypeException
      */
-    public function guardChannelType(string $channel_type){
-        if($channel_type !== self::TEXT_CHANNEL || $channel_type !== self::VOICE_CHANNEL){
-            throw new InvalidChannelTypeException("Invalid channel type given. Channel type has to be: 'text' or 'voice'");
+    public function guardChannelType(string $channel_type)
+    {
+        if ($channel_type !== self::TEXT_CHANNEL || $channel_type !== self::VOICE_CHANNEL) {
+            throw new InvalidChannelTypeException(
+                "Invalid channel type given. Channel type has to be: 'text' or 'voice'");
         }
     }
-
 }

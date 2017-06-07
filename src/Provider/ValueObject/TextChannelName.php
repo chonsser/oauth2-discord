@@ -32,7 +32,7 @@ final class TextChannelName
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->channel_name;
     }
@@ -42,18 +42,19 @@ final class TextChannelName
      *
      * @throws InvalidChannelNameException
      */
-    private function guardChannelName($channel_name){
-        if(preg_match('/\s/', $channel_name)) {
+    private function guardChannelName($channel_name)
+    {
+        if (preg_match('/\s/', $channel_name)) {
             throw new InvalidChannelNameException("Text channel name can't have whitespaces in it");
         }
 
         $name_length = strlen($channel_name);
 
-        if($name_length > self::MAX_LENGTH){
+        if ($name_length > self::MAX_LENGTH) {
             throw new InvalidChannelNameException("Text channel name must have less than 100 characters");
         }
 
-        if($name_length < self::MIN_LENGTH) {
+        if ($name_length < self::MIN_LENGTH) {
             throw new InvalidChannelNameException("Text channel name must have more than 2 characters");
         }
     }
@@ -63,7 +64,8 @@ final class TextChannelName
      *
      * @return bool
      */
-    public function isEqualTo(VoiceChannelName $channelName){
+    public function isEqualTo(VoiceChannelName $channelName)
+    {
         return $this->channel_name === (string)$channelName;
     }
 }
