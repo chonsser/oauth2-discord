@@ -2,8 +2,7 @@
   "name": "chonsser/oauth2-discord",
   "description": "OAuth2 provider for Discord API authentication",
   "license": "MIT",
-  "version": "1.0.0",
-  "type": "library",
+ "type": "library",
   "authors": [
     {
       "name": "Dominik Szymański",
@@ -16,12 +15,12 @@
     "doctrine/collections": "^1.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "~6.1"
+    "phpunit/phpunit": "^5.7"
   },
   "autoload": {
     "psr-4": {
       "Discord\\OAuth2\\Client\\": "src",
-      "Discord\\OAuth2\\Tests\\": "tests"
+      "Discord\\OAuth2\\Client\\Tests\\": "tests"
     }
   }
 }
