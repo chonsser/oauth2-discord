@@ -60,11 +60,11 @@ final class TextChannelName
     }
 
     /**
-     * @param VoiceChannelName $channelName
+     * @param TextChannelName $channelName
      *
      * @return bool
      */
-    public function isEqualTo(VoiceChannelName $channelName)
+    public function isEqualTo(TextChannelName $channelName)
     {
         return $this->channel_name === (string)$channelName;
     }
