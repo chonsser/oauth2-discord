@@ -16,3 +16,5 @@ To install, use composer
 ```
 composer require chonsser/oauth2-discord
 ```
+
+[![DLM logo](http://i.imgur.com/j10tczn.png)](https://discordlist.me)[![DSC logo](http://i.imgur.com/5AKExtf.png)](https://discordserv.com)
