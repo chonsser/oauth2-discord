@@ -119,7 +119,7 @@ class Discord extends AbstractProvider
             $user
                 ->setId($response['id'])
                 ->setUsername(new UserName($response['username']))
-                ->setDiscriminator(new UserDiscriminator($response['discriminator']))
+                ->setDiscriminator(new UserDiscriminator((int)$response['discriminator']))
                 ->setAvatar($response['avatar'])
                 ->setBot(array_key_exists('bot', $response) ? $response['bot'] : false)
                 ->setMfaEnabled($response['mfa_enabled']);
@@ -214,7 +214,7 @@ class Discord extends AbstractProvider
 
         $invite
             ->setInviterAvatar($response['inviter']['avatar'])
-            ->setInviterDiscriminator(new UserDiscriminator($response['inviter']['discriminator']))
+            ->setInviterDiscriminator(new UserDiscriminator((int)$response['inviter']['discriminator']))
             ->setInviterId($response['inviter']['id'])
             ->setInviterAvatar($response['inviter']['avatar'])
             ->setCode($response['code'])
