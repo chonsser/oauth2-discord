@@ -44,6 +44,12 @@ final class GuildName
      */
     private function guardGuildName($guild_name)
     {
+        if(is_string($guild_name) === false){
+            throw new InvalidGuildNameException(
+                'Invalid guild name given. Guild name has to be a string'
+            );
+        }
+
         $name_length = strlen($guild_name);
 
         if ($name_length > self::MAX_LENGTH) {

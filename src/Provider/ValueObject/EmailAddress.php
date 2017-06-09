@@ -40,6 +40,12 @@ final class EmailAddress
      */
     private function guardEmail($email)
     {
+        if(is_string($email) === false){
+            throw new InvalidEmailException(
+                'Invalid email address given. Email has to be a string'
+            );
+        }
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidEmailException($email . ' is not a valid email address');
         }

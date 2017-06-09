@@ -44,6 +44,12 @@ final class VoiceChannelName
      */
     private function guardChannelName($channel_name)
     {
+        if(is_string($channel_name) === false){
+            throw new InvalidVoiceChannelNameException(
+                'Invalid text channel name given. Text channel name has to be a string'
+            );
+        }
+
         $name_length = strlen($channel_name);
 
         if ($name_length > self::MAX_LENGTH) {

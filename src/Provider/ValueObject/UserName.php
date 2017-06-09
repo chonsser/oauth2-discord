@@ -44,6 +44,10 @@ final class UserName
      */
     private function guardUserName($user_name)
     {
+        if(is_string($user_name) === false){
+            throw new InvalidUserNameException("Username has to be a string");
+        }
+
         $name_length = strlen($user_name);
 
         if ($name_length > self::MAX_LENGTH) {

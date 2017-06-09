@@ -21,9 +21,9 @@ final class UserDiscriminator
     /**
      * UserDiscriminator constructor.
      *
-     * @param int $discriminator
+     * @param $discriminator
      */
-    public function __construct(int $discriminator)
+    public function __construct($discriminator)
     {
         $this->guardDiscriminator($discriminator);
 
@@ -45,6 +45,10 @@ final class UserDiscriminator
      */
     private function guardDiscriminator($discriminator)
     {
+        if(is_int($discriminator) === false){
+            throw new InvalidUserDiscriminatorException("Discriminator has to be a integer");
+        }
+
         $length = strlen((string)$discriminator);
 
         if ($length !== self::LENGTH) {

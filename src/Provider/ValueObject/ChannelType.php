@@ -40,12 +40,18 @@ class ChannelType
     }
 
     /**
-     * @param string $channel_type
+     * @param $channel_type
      *
      * @throws InvalidChannelTypeException
      */
-    public function guardChannelType(string $channel_type)
+    public function guardChannelType($channel_type)
     {
+        if(is_string($channel_type) === false){
+            throw new InvalidChannelTypeException(
+                'Invalid channel type given. Channel type has to be a string'
+            );
+        }
+
         if ($channel_type !== self::TEXT_CHANNEL && $channel_type !== self::VOICE_CHANNEL) {
             throw new InvalidChannelTypeException(
                 "Invalid channel type given. Channel type has to be: 'text' or 'voice'"

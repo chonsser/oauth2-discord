@@ -44,6 +44,12 @@ final class TextChannelName
      */
     private function guardChannelName($channel_name)
     {
+        if(is_string($channel_name) === false){
+            throw new InvalidTextChannelNameException(
+                'Invalid text channel name given. Text channel name has to be a string'
+            );
+        }
+
         if (preg_match('/\s/', $channel_name)) {
             throw new InvalidTextChannelNameException("Text channel name can't have whitespaces in it");
         }
