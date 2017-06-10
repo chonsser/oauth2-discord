@@ -18,6 +18,12 @@ final class UserDiscriminatorTest extends TestCase
         $this->assertInstanceOf(UserDiscriminator::class, new UserDiscriminator(1234));
     }
 
+    public function testCannotBeCreatedFromString(){
+        $this->expectException(InvalidUserDiscriminatorException::class);
+
+        new UserDiscriminator('1234');
+    }
+
     public function testCannotBeCreatedByTooLongDiscriminator()
     {
         $this->expectException(InvalidUserDiscriminatorException::class);
@@ -36,7 +42,7 @@ final class UserDiscriminatorTest extends TestCase
     {
         $this->assertEquals(
             '1234',
-            new UserDiscriminator('1234')
+            new UserDiscriminator(1234)
         );
     }
 

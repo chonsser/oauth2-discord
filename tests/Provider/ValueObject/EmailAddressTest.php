@@ -21,6 +21,12 @@ final class EmailAddressTest extends TestCase
         );
     }
 
+    public function testCannotBeCreatedFromInt(){
+        $this->expectException(InvalidEmailException::class);
+
+        new EmailAddress(1234);
+    }
+
     public function testCannotBeCreatedFromInvalidEmailAddress()
     {
         $this->expectException(InvalidEmailException::class);

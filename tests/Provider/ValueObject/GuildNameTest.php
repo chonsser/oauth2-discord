@@ -27,6 +27,12 @@ final class GuildNameTest extends TestCase
         );
     }
 
+    public function testCannotBeCreatedFromInt(){
+        $this->expectException(InvalidGuildNameException::class);
+
+        new GuildName(1234);
+    }
+
     public function testCannotBeCreatedFromTooLongGuildName()
     {
         $this->expectException(InvalidGuildNameException::class);

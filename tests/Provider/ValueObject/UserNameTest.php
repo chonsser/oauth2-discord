@@ -26,6 +26,12 @@ class UserNameTest extends TestCase
         );
     }
 
+    public function testCannotBeCreatedFromInt(){
+        $this->expectException(InvalidUserNameException::class);
+
+        new UserName(1234);
+    }
+
     public function testCannotBeCreatedByTooLongUsername()
     {
         $this->expectException(InvalidUserNameException::class);

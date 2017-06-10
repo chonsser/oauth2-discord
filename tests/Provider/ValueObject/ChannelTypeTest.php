@@ -26,6 +26,12 @@ final class ChannelTypeTest extends TestCase
         );
     }
 
+    public function testCannotBeCreatedFromInt(){
+        $this->expectException(InvalidChannelTypeException::class);
+
+        new ChannelType(1234);
+    }
+
     public function testCannotBeCreatedFromInvalidChannelType()
     {
         $this->expectException(InvalidChannelTypeException::class);

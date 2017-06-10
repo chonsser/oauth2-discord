@@ -26,6 +26,12 @@ final class VoiceChannelNameTest extends TestCase
         );
     }
 
+    public function testCannotBeCreatedFromInt(){
+        $this->expectException(InvalidVoiceChannelNameException::class);
+
+        new VoiceChannelName(1234);
+    }
+
     public function testCannotBeCreatedFromTooLongTextChannelName()
     {
         $this->expectException(InvalidVoiceChannelNameException::class);
