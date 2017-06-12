@@ -130,7 +130,7 @@ class Guild
      */
     public function hasPermission(int $permission): bool
     {
-        if ($this->permissions & $permission === $permission) {
+        if (($this->permissions & $permission) === $permission) {
             return true;
         }
         return false;
