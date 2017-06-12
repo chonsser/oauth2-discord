@@ -2,7 +2,7 @@
   "name": "chonsser/oauth2-discord",
   "description": "OAuth2 provider for Discord API authentication",
   "license": "MIT",
- "type": "library",
+  "type": "library",
   "authors": [
     {
       "name": "Dominik Szymański",
@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "league/oauth2-client": "~2.2",
+    "league/oauth2-client": "^2.2",
     "doctrine/collections": "^1.4"
   },
   "require-dev": {
