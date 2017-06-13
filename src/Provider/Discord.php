@@ -80,7 +80,7 @@ class Discord extends AbstractProvider
      */
     protected function checkResponse(ResponseInterface $response, $data)
     {
-        if ($response->getStatusCode() == 429) {
+        if ($response->getStatusCode() === 429) {
             throw new RatelimitException('Globally: ' . ($data['global'] ? 'yes' : 'no'));
         }
 
@@ -88,7 +88,7 @@ class Discord extends AbstractProvider
             throw new ApiException('Unauthorized');
         }
 
-        if (isset($data['error'])) {
+        if (isset($data['error']) === true) {
             throw new ApiException('Discord API exception: ' . $data['error']);
         }
     }
@@ -113,8 +113,8 @@ class Discord extends AbstractProvider
         $user
             ->setAccessToken($token);
 
-        if (array_key_exists('id', $response) &&
-            array_key_exists('username', $response)
+        if (array_key_exists('id', $response) === true &&
+            array_key_exists('username', $response) === true
         ) { // Has 'identify' scope
             $user
                 ->setId($response['id'])
@@ -125,7 +125,7 @@ class Discord extends AbstractProvider
                 ->setMfaEnabled($response['mfa_enabled']);
         }
 
-        if (array_key_exists('email', $response)) { // Has 'email' scope
+        if (array_key_exists('email', $response) === true) { // Has 'email' scope
             $user
                 ->setEmail(new EmailAddress($response['email']))
                 ->setVerified($response['verified']);
