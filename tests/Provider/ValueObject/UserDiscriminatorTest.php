@@ -15,41 +15,41 @@ final class UserDiscriminatorTest extends TestCase
 {
     public function testCanBeCreatedByValidDiscriminator()
     {
-        $this->assertInstanceOf(UserDiscriminator::class, new UserDiscriminator(1234));
+        $this->assertInstanceOf(UserDiscriminator::class, new UserDiscriminator('1234'));
     }
 
-    public function testCannotBeCreatedFromString(){
+    public function testCannotBeCreatedFromInt(){
         $this->expectException(InvalidUserDiscriminatorException::class);
 
-        new UserDiscriminator('1234');
+        new UserDiscriminator(123);
     }
 
     public function testCannotBeCreatedByTooLongDiscriminator()
     {
         $this->expectException(InvalidUserDiscriminatorException::class);
 
-        new UserDiscriminator(12345);
+        new UserDiscriminator('12345');
     }
 
     public function testCannotBeCreatedByTooShortDiscriminator()
     {
         $this->expectException(InvalidUserDiscriminatorException::class);
 
-        new UserDiscriminator(123);
+        new UserDiscriminator('123');
     }
 
     public function testCanBeUsedAsString()
     {
         $this->assertEquals(
             '1234',
-            new UserDiscriminator(1234)
+            new UserDiscriminator('1234')
         );
     }
 
     public function testIsEqualTo()
     {
-        $email = new UserDiscriminator(1234);
+        $email = new UserDiscriminator('1234');
 
-        $this->isTrue($email->isEqualTo(new UserDiscriminator(1234)));
+        $this->isTrue($email->isEqualTo(new UserDiscriminator('1234')));
     }
 }
