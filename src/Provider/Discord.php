@@ -214,7 +214,7 @@ class Discord extends AbstractProvider
 
         $invite
             ->setInviterAvatar($response['inviter']['avatar'])
-            ->setInviterDiscriminator(new UserDiscriminator((int)$response['inviter']['discriminator']))
+            ->setInviterDiscriminator(new UserDiscriminator((string)$response['inviter']['discriminator']))
             ->setInviterId($response['inviter']['id'])
             ->setInviterAvatar($response['inviter']['avatar'])
             ->setCode($response['code'])
