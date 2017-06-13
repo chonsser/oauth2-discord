@@ -14,7 +14,7 @@ final class UserDiscriminator
         LENGTH = 4;
 
     /**
-     * @var int
+     * @var string
      */
     private $discriminator;
 
@@ -45,14 +45,14 @@ final class UserDiscriminator
      */
     private function guardDiscriminator($discriminator)
     {
-        if(is_int($discriminator) === false){
-            throw new InvalidUserDiscriminatorException("Discriminator has to be a integer");
+        if(is_string($discriminator) === false){
+            throw new InvalidUserDiscriminatorException("Discriminator has to be a string");
         }
 
         $length = strlen((string)$discriminator);
 
         if ($length !== self::LENGTH) {
-            throw new InvalidUserDiscriminatorException("Discriminator must have 4 numbers");
+            throw new InvalidUserDiscriminatorException("Discriminator must have 4 chars");
         }
     }
 
