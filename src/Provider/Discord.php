@@ -140,16 +140,18 @@ class Discord extends AbstractProvider
         );
 
         foreach ($guilds as $key => $guild) {
-            $_guild = new Guild();
+            if($guild['id'] !== null){
+                $_guild = new Guild();
 
-            $_guild
-                ->setId($guild['id'])
-                ->setName(new GuildName($guild['name']))
-                ->setIcon($guild['icon'])
-                ->setOwner($guild['owner'])
-                ->setPermissions($guild['permissions']);
+                $_guild
+                    ->setId($guild['id'])
+                    ->setName(new GuildName($guild['name']))
+                    ->setIcon($guild['icon'])
+                    ->setOwner($guild['owner'])
+                    ->setPermissions($guild['permissions']);
 
-            $user->addGuild($_guild);
+                $user->addGuild($_guild);
+            }
         }
 
         return $user;

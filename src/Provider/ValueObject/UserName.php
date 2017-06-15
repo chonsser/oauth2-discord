@@ -50,11 +50,11 @@ final class UserName
 
         $name_length = strlen($user_name);
 
-        if ($name_length >= self::MAX_LENGTH) {
+        if ($name_length > self::MAX_LENGTH) {
             throw new InvalidUserNameException("Username must have less than " . self::MAX_LENGTH . " characters");
         }
 
-        if ($name_length <= self::MIN_LENGTH) {
+        if ($name_length < self::MIN_LENGTH) {
             throw new InvalidUserNameException("Username must have more than " . self::MIN_LENGTH . " characters");
         }
     }
