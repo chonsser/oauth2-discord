@@ -44,18 +44,18 @@ final class UserName
      */
     private function guardUserName($user_name)
     {
-        if(is_string($user_name) === false){
+        if (is_string($user_name) === false) {
             throw new InvalidUserNameException("Username has to be a string");
         }
 
         $name_length = strlen($user_name);
 
-        if ($name_length > self::MAX_LENGTH) {
-            throw new InvalidUserNameException("Username must have less than 100 characters");
+        if ($name_length >= self::MAX_LENGTH) {
+            throw new InvalidUserNameException("Username must have less than " . self::MAX_LENGTH . " characters");
         }
 
-        if ($name_length < self::MIN_LENGTH) {
-            throw new InvalidUserNameException("Username must have more than 2 characters");
+        if ($name_length <= self::MIN_LENGTH) {
+            throw new InvalidUserNameException("Username must have more than " . self::MIN_LENGTH . " characters");
         }
     }
 
