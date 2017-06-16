@@ -48,7 +48,7 @@ final class UserName
             throw new InvalidUserNameException("Username has to be a string");
         }
 
-        $name_length = strlen($user_name);
+        $name_length = mb_strlen($user_name);
 
         if ($name_length > self::MAX_LENGTH) {
             throw new InvalidUserNameException("Username must have less than " . self::MAX_LENGTH . " characters");
