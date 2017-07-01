@@ -54,7 +54,7 @@ final class TextChannelName
             throw new InvalidTextChannelNameException("Text channel name can't have whitespaces in it");
         }
 
-        $name_length = strlen($channel_name);
+        $name_length = mb_strlen($channel_name);
 
         if ($name_length > self::MAX_LENGTH) {
             throw new InvalidTextChannelNameException("Text channel name must have less than 100 characters");

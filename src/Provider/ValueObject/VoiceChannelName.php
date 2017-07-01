@@ -50,7 +50,7 @@ final class VoiceChannelName
             );
         }
 
-        $name_length = strlen($channel_name);
+        $name_length = mb_strlen($channel_name);
 
         if ($name_length > self::MAX_LENGTH) {
             throw new InvalidVoiceChannelNameException("Voice channel name must have less than 100 characters");

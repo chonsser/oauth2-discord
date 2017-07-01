@@ -1,5 +1,4 @@
 <?php
-
 namespace Discord\OAuth2\Client\Tests\Provider\ValueObject;
 
 use Discord\OAuth2\Client\Provider\Exception\ValueObject\InvalidGuildNameException;

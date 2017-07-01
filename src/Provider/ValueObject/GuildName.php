@@ -50,7 +50,7 @@ final class GuildName
             );
         }
 
-        $name_length = strlen($guild_name);
+        $name_length = mb_strlen($guild_name);
 
         if ($name_length > self::MAX_LENGTH) {
             throw new InvalidGuildNameException("Guild name must have less than 100 characters");

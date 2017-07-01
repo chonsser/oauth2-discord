@@ -125,7 +125,7 @@ class Discord extends AbstractProvider
                 ->setMfaEnabled($response['mfa_enabled']);
         }
 
-        if (array_key_exists('email', $response) === true) { // Has 'email' scope
+        if (array_key_exists('email', $response) === true && $response['email'] !== null) { // Has 'email' scope
             $user
                 ->setEmail(new EmailAddress($response['email']))
                 ->setVerified($response['verified']);
