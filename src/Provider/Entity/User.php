@@ -194,7 +194,7 @@ class User implements ResourceOwnerInterface
      */
     public function isVerified(): bool
     {
-        return $this->verified;
+        return boolval($this->verified);
     }
 
     /**
