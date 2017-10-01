@@ -65,6 +65,6 @@ final class TextChannelNameTest extends TestCase
     {
         $name = new TextChannelName('me');
 
-        $this->isTrue($name->isEqualTo(new TextChannelName('me')));
+        $this->assertTrue($name->isEqualTo(new TextChannelName('me')));
     }
 }

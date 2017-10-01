@@ -55,11 +55,9 @@ final class ChannelTypeTest extends TestCase
     public function testIsEqualTo()
     {
         $text = new ChannelType('text');
-
-        $this->isTrue($text->isEqualTo(new ChannelType('text')));
-
         $voice = new ChannelType('voice');
 
-        $this->isTrue($voice->isEqualTo(new ChannelType('voice')));
+        $this->assertTrue($text->isEqualTo(new ChannelType('text')));
+        $this->assertTrue($voice->isEqualTo(new ChannelType('voice')));
     }
 }

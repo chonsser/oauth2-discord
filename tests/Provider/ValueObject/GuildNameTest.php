@@ -58,6 +58,6 @@ final class GuildNameTest extends TestCase
     {
         $name = new GuildName('me');
 
-        $this->isTrue($name->isEqualTo(new GuildName('me')));
+        $this->assertTrue($name->isEqualTo(new GuildName('me')));
     }
 }
