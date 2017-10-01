@@ -58,6 +58,6 @@ final class VoiceChannelNameTest extends TestCase
     {
         $name = new VoiceChannelName('me');
 
-        $this->isTrue($name->isEqualTo(new VoiceChannelName('me')));
+        $this->assertTrue($name->isEqualTo(new VoiceChannelName('me')));
     }
 }

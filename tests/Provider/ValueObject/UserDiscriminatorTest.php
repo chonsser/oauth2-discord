@@ -50,6 +50,6 @@ final class UserDiscriminatorTest extends TestCase
     {
         $email = new UserDiscriminator('1234');
 
-        $this->isTrue($email->isEqualTo(new UserDiscriminator('1234')));
+        $this->assertTrue($email->isEqualTo(new UserDiscriminator('1234')));
     }
 }

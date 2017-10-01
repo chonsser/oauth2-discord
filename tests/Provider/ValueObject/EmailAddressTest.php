@@ -46,6 +46,6 @@ final class EmailAddressTest extends TestCase
     {
         $email = new EmailAddress('me@example.com');
 
-        $this->isTrue($email->isEqualTo(new EmailAddress('me@example.com')));
+        $this->assertTrue($email->isEqualTo(new EmailAddress('me@example.com')));
     }
 }

@@ -58,6 +58,6 @@ class UserNameTest extends TestCase
     {
         $name = new UserName('me');
 
-        $this->isTrue($name->isEqualTo(new UserName('me')));
+        $this->assertTrue($name->isEqualTo(new UserName('me')));
     }
 }
