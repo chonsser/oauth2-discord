@@ -46,14 +46,8 @@ final class UserDiscriminator
      */
     private function guardDiscriminator($discriminator)
     {
-        if(is_string($discriminator) === false){
-            throw new InvalidUserDiscriminatorException("Discriminator has to be a string");
-        }
-        if (strlen((string)$discriminator) !== self::LENGTH) {
-            throw new InvalidUserDiscriminatorException("Discriminator must have 4 chars");
-        }
-        if (!is_numeric($discriminator)) {
-            throw new InvalidUserDiscriminatorException("Discriminator must be numeric");
+        if (!preg_match('/^\d{4}$/', $discriminator)) {
+            throw new InvalidUserDiscriminatorException("Discriminator must consist of 4 numbers");
         }
     }
 
