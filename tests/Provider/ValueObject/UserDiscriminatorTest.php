@@ -52,4 +52,11 @@ final class UserDiscriminatorTest extends TestCase
 
         $this->assertTrue($email->isEqualTo(new UserDiscriminator('1234')));
     }
+
+    public function testIfThrowExceptionOnNonNumericValues()
+    {
+        $this->expectException(InvalidUserDiscriminatorException::class);
+
+        new UserDiscriminator('abcd');
+    }
 }

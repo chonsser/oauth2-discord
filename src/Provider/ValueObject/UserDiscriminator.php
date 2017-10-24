@@ -22,6 +22,7 @@ final class UserDiscriminator
      * UserDiscriminator constructor.
      *
      * @param $discriminator
+     * @throws InvalidUserDiscriminatorException
      */
     public function __construct($discriminator)
     {
@@ -48,11 +49,11 @@ final class UserDiscriminator
         if(is_string($discriminator) === false){
             throw new InvalidUserDiscriminatorException("Discriminator has to be a string");
         }
-
-        $length = strlen((string)$discriminator);
-
-        if ($length !== self::LENGTH) {
+        if (strlen((string)$discriminator) !== self::LENGTH) {
             throw new InvalidUserDiscriminatorException("Discriminator must have 4 chars");
+        }
+        if (!is_numeric($discriminator)) {
+            throw new InvalidUserDiscriminatorException("Discriminator must be numeric");
         }
     }
 
