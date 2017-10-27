@@ -32,7 +32,7 @@ class Discord extends AbstractProvider
      * @var string API_URL Discord's API url
      */
     const
-        API_VERSION = 'v1',
+        API_VERSION = 'v6',
         API_URL = 'https://discordapp.com/api/' . self::API_VERSION;
 
     /**
