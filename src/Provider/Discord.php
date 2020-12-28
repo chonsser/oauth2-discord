@@ -122,7 +122,10 @@ class Discord extends AbstractProvider
                 ->setDiscriminator(new UserDiscriminator((string)$response['discriminator']))
                 ->setAvatar($response['avatar'])
                 ->setBot(array_key_exists('bot', $response) ? $response['bot'] : false)
-                ->setMfaEnabled($response['mfa_enabled']);
+                ->setMfaEnabled($response['mfa_enabled'])
+                ->setFlags($response['flags'])
+                ->setPublicFlags($response['public_flags'])
+                ->setPremiumType(array_key_exists('premium_type', $response) ? $response['premium_type'] : 0);
         }
 
         if (array_key_exists('email', $response) === true && $response['email'] !== null) { // Has 'email' scope

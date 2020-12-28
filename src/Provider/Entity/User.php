@@ -63,6 +63,21 @@ class User implements ResourceOwnerInterface
     private $guilds;
 
     /**
+     * @var int
+     */
+    private $flags;
+
+    /**
+     * @var int
+     */
+    private $public_flags;
+
+    /**
+     * @var int
+     */
+    private $premium_type;
+
+    /**
      * @var AccessToken
      */
     protected $access_token;
@@ -91,6 +106,60 @@ class User implements ResourceOwnerInterface
     public function setId(string $id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFlags(): int
+    {
+        return $this->flags;
+    }
+
+    /**
+     * @param int $flags
+     * @return $this
+     */
+    public function setFlags($flags)
+    {
+        $this->flags = $flags;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPublicFlags()
+    {
+        return $this->public_flags;
+    }
+
+    /**
+     * @param int $flags
+     * @return User
+     */
+    public function setPublicFlags($flags)
+    {
+        $this->public_flags = $flags;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPremiumType()
+    {
+        return $this->premium_type;
+    }
+
+    /**
+     * @param int $premiumType
+     * @return $this
+     */
+    public function setPremiumType($premiumType)
+    {
+        $this->premium_type = $premiumType;
         return $this;
     }
 
@@ -154,7 +223,7 @@ class User implements ResourceOwnerInterface
     /**
      * @return bool
      */
-    public function isBot(): bool
+    public function isBot()
     {
         return $this->bot;
     }
@@ -164,7 +233,7 @@ class User implements ResourceOwnerInterface
      *
      * @return $this
      */
-    public function setBot(bool $bot)
+    public function setBot($bot)
     {
         $this->bot = $bot;
         return $this;
@@ -173,7 +242,7 @@ class User implements ResourceOwnerInterface
     /**
      * @return bool
      */
-    public function isMfaEnabled(): bool
+    public function isMfaEnabled()
     {
         return $this->mfa_enabled;
     }
@@ -183,7 +252,7 @@ class User implements ResourceOwnerInterface
      *
      * @return $this
      */
-    public function setMfaEnabled(bool $mfa_enabled)
+    public function setMfaEnabled($mfa_enabled)
     {
         $this->mfa_enabled = $mfa_enabled;
         return $this;
@@ -192,7 +261,7 @@ class User implements ResourceOwnerInterface
     /**
      * @return bool
      */
-    public function isVerified(): bool
+    public function isVerified()
     {
         return boolval($this->verified);
     }
@@ -202,7 +271,7 @@ class User implements ResourceOwnerInterface
      *
      * @return $this
      */
-    public function setVerified(bool $verified)
+    public function setVerified($verified)
     {
         $this->verified = $verified;
         return $this;
@@ -279,15 +348,18 @@ class User implements ResourceOwnerInterface
     }
 
     /**
-     * @inheritDoc
+     * @return array
      */
     public function toArray()
     {
         return [
-            'id' => $this->id,
-            'username' => $this->username,
+            'id'            => $this->id,
+            'username'      => $this->username,
             'discriminator' => $this->discriminator,
-            'avatar' => $this->avatar
+            'avatar'        => $this->avatar,
+            'flags'         => $this->flags,
+            'public_flags'  => $this->public_flags,
+            'premium_type'  => $this->premium_type
         ];
     }
 }
