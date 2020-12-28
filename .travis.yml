@@ -2,7 +2,7 @@ language: php
 
 matrix:
     include:
-        - php: 7.1
+        - php: 7.3
         - php: nightly
     fast_finish: true
     allow_failures:
@@ -17,4 +17,4 @@ script:
 after_success:
   - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
   - php coveralls.phar
-  
+
