@@ -125,7 +125,7 @@ class Discord extends AbstractProvider
                 ->setMfaEnabled($response['mfa_enabled'])
                 ->setFlags($response['flags'])
                 ->setPublicFlags($response['public_flags'])
-                ->setPremiumType($response['premium_type']);
+                ->setPremiumType(array_key_exists('premium_type', $response) ? $response['premium_type'] : 0);
         }
 
         if (array_key_exists('email', $response) === true && $response['email'] !== null) { // Has 'email' scope
