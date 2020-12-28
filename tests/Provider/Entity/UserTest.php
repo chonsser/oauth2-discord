@@ -28,10 +28,13 @@ class UserTest extends TestCase
         $user->setAvatar('avatar_link');
 
         $expected = [
-          'id' => 'ID',
-          'username' => $username,
-          'discriminator' => $discriminator,
-          'avatar' => 'avatar_link'
+            'id' => 'ID',
+            'username' => $username,
+            'discriminator' => $discriminator,
+            'avatar' => 'avatar_link',
+            'flags' => null,
+            'public_flags' => null,
+            'premium_type' => null
         ];
 
         $this->assertSame($expected, $user->toArray());
